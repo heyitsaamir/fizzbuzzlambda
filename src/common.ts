@@ -1,0 +1,1 @@
+export type Proc<X, Y = X> = (input: X) => Y;

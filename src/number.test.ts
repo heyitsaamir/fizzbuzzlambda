@@ -1,9 +1,10 @@
-import { Proc, Zero, One, Two, Three, Fifteen, Five, Hundred } from "./number";
+import { Proc } from "./common";
+import { Zero, One, Two, Three, Fifteen, Five, Hundred } from "./number";
 
 const CountOneUp: Proc<number> = (n) => n + 1;
 
-const toInteger = (proc: Proc<Proc<number>>) => {
-  return proc(CountOneUp)(0);
+const toInteger = (numberProc: Proc<Proc<number>>) => {
+  return numberProc(CountOneUp)(0);
 };
 
 describe("Numbers", () => {
