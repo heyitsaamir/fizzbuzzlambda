@@ -12,14 +12,17 @@
 
 import { Proc } from './common';
 
-
 export const True =
-  <TruthFn>(inputX: TruthFn) =>
-    <FalseFn>(inputY: FalseFn) => inputX
+  <TruthFn, FalseFn extends TruthFn>(inputX: TruthFn) =>
+    (inputY: FalseFn) => inputX
 
 export const False =
-  <TruthFn>(inputX: TruthFn) =>
-    <FalseFn>(inputY: FalseFn) => inputY
+  <TruthFn, FalseFn extends TruthFn>(inputX: TruthFn) =>
+    (inputY: FalseFn) => inputY
+
+export type TruthType<TruthFn, FalseFn extends TruthFn> = (inputX: TruthFn) => (inputY: FalseFn) => TruthFn;
+export type FalseType<TruthFn, FalseFn extends TruthFn> = (inputX: TruthFn) => (inputY: FalseFn) => FalseFn;
+export type Boolean<TruthFn, FalseFn extends TruthFn> = TruthType<TruthFn, FalseFn> | FalseType<TruthFn, FalseFn>;
 
 export const If = <TruthFn, FalseFn>(proc: Proc<TruthFn, Proc<FalseFn>>) => {
   return proc

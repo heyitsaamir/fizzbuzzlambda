@@ -9,56 +9,55 @@
 import { Proc } from "./common";
 
 export const Zero =
-  <Y>(_proc: Proc<Y>) =>
-  (input: Y) => {
-    return input;
-  };
+  <Y, Z>(proc: Proc<Y, Z>) =>
+    (input: Y) => {
+      return input;
+    };
 
 export const One =
-  <Y>(proc: Proc<Y>) =>
-  (input: Y) => {
-    return proc(input);
-  };
+  <Y, Z extends Y>(proc: Proc<Y, Z>) =>
+    (input: Y) => {
+      return proc(input);
+    };
 
 export const Two =
-  <Y>(proc: Proc<Y>) =>
-  (input: Y) => {
-    return proc(proc(input));
-  };
+  <Y, Z extends Y>(proc: Proc<Y, Z>) =>
+    (input: Y) => {
+      return proc(proc(input));
+    };
 
 export const Three =
-  <Y>(proc: Proc<Y>) =>
-  (input: Y) => {
-    return proc(proc(proc(input)));
-  };
+  <Y, Z extends Y>(proc: Proc<Y, Z>) =>
+    (input: Y) => {
+      return proc(proc(proc(input)));
+    };
 
 export const Five =
-  <Y>(proc: Proc<Y>) =>
-  (input: Y) => {
-    return proc(proc(proc(proc(proc(input)))));
-  };
+  <Y, Z extends Y>(proc: Proc<Y, Z>) =>
+    (input: Y) => {
+      return proc(proc(proc(proc(proc(input)))));
+    };
 
 export const Fifteen =
-  <Y>(proc: Proc<Y>) =>
-  (input: Y) => {
-    return proc(
-      proc(
+  <Y, Z extends Y>(proc: Proc<Y, Z>) =>
+    (input: Y) => {
+      return proc(
         proc(
           proc(
             proc(
-              proc(proc(proc(proc(proc(proc(proc(proc(proc(proc(input))))))))))
+              proc(
+                proc(proc(proc(proc(proc(proc(proc(proc(proc(proc(input))))))))))
+              )
             )
           )
         )
-      )
-    );
-  };
+      );
+    };
 
 export const Hundred =
-  <Y>(proc: Proc<Y>) =>
-  (input: Y) => {
-    return proc(
-      proc(
+  <Y, Z extends Y>(proc: Proc<Y, Z>) =>
+    (input: Y) => {
+      return proc(
         proc(
           proc(
             proc(
@@ -157,7 +156,9 @@ export const Hundred =
                                                                                                                                                                                                       proc(
                                                                                                                                                                                                         proc(
                                                                                                                                                                                                           proc(
-                                                                                                                                                                                                            input
+                                                                                                                                                                                                            proc(
+                                                                                                                                                                                                              input
+                                                                                                                                                                                                            )
                                                                                                                                                                                                           )
                                                                                                                                                                                                         )
                                                                                                                                                                                                       )
@@ -256,6 +257,5 @@ export const Hundred =
             )
           )
         )
-      )
-    );
-  };
+      );
+    };
