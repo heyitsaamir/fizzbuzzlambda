@@ -22,11 +22,3 @@ export const IsZero = <X, Y extends X>(proc: Proc<Proc<Boolean<X, Y>, Boolean<X,
     return False
   })(True);
 }
-
-// Input type needs work
-const zero = IsZero<boolean, boolean>(Zero);
-const one = IsZero<boolean, boolean>(One);
-
-// Return type is good
-zero(true)(false);
-one(true)(false);
