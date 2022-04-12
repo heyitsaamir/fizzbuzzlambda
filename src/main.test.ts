@@ -1,3 +1,4 @@
+import { Increment } from "./arithmetic";
 import { Boolean, False, If, True } from "./boolean";
 import { Proc } from "./common";
 import { Fifteen, Five, Hundred, One, Three, Two, Zero } from "./number";
@@ -78,5 +79,13 @@ describe('Predicate', () => {
     expect(toBoolean(IsZero(Zero))).toEqual(true)
     expect(toBoolean(IsZero(One))).toEqual(false)
     expect(toBoolean(IsZero(Two))).toEqual(false)
+  })
+})
+
+describe('Arithmetic', () => {
+  it('Increment', () => {
+    expect(toInteger(Increment(One))).toEqual(2)
+    expect(toInteger(Increment(Two))).toEqual(3)
+    expect(toInteger(Increment(Five))).toEqual(6)
   })
 })

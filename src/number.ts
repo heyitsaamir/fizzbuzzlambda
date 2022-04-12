@@ -8,8 +8,10 @@
 
 import { Proc } from "./common";
 
+export type Number<Y, Z extends Y> = (proc: Proc<Y, Z>) => (input: Y) => Y | Z;
+
 export const Zero =
-  <Y, Z>(proc: Proc<Y, Z>) =>
+  <Y, Z extends Y>(proc: Proc<Y, Z>) =>
     (input: Y) => {
       return input;
     };
